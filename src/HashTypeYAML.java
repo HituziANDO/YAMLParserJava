@@ -51,46 +51,6 @@ public class HashTypeYAML {
 		}
 	}
 
-//	public Map<String, Map<String, Object>> decode (InputStream is) throws IOException {
-//		String line;
-//		String key;
-//		String val;
-//		String keyChain = "";
-//		Map<String, Map<String, Object>> hash1 = new HashMap<String, Map<String, Object>>();
-//		Map<String, Object> hash2 = new HashMap<String, Object>();
-//		KeyChainFactory kcFactory = new KeyChainFactory();
-//		BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-//
-//		while ((line = reader.readLine()) != null) {
-//
-//			// Ignore comment line and empty line.
-//			if (line.startsWith("#") || "".equals(line) || !line.contains(":")) continue;
-//
-//			String[] str = line.split(":");
-//			key = str[0];
-//			int index = (int) (Math.floor(key.lastIndexOf(mIndent) * 0.5) + 1);
-//			keyChain = kcFactory.createKeyChain(index, key);
-//
-//			// Add sub-hash to hash if only key.
-//			if (str.length == 1) {
-//				if (hash1.containsKey(keyChain)) {
-//					hash2 = (Map<String, Object>) hash1.get(keyChain);
-//				} else {
-//					hash2 = new HashMap<String, Object>();
-//				}
-//				hash1.put(keyChain, hash2);
-//			}
-//			// Add key-value.
-//			else {
-//				// Remove unnecessary strings.
-//				val = str[1].trim().replaceAll("\"", "");
-//				hash2.put(keyChain, val);
-//			}
-//		}
-//
-//		return hash1;
-//	}
-
 	public Map<String, Object> decode (InputStream is) throws IOException {
 		String line;
 		String key;
@@ -121,10 +81,20 @@ public class HashTypeYAML {
 		return hash;
 	}
 
+	/**
+	 * 
+	 * @author Hituzi ANDO
+	 *
+	 */
 	private class KeyChainFactory {
 
 		private List<String> mKeys = new ArrayList<String>();
-
+		/**
+		 * Create a key which is used with the decoded value.
+		 * @param index
+		 * @param key
+		 * @return e.g.) hoge.foo.bar.key
+		 */
 		public String createKeyChain (int index, String key) {
 			// Remove indents.
 			key = key.trim();

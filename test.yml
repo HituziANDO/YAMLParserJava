@@ -1,0 +1,11 @@
+
+test:
+  id: 1234
+  country: "Japan"
+  data:
+    public:
+      title: "XYZ"
+      description: "xyz"
+    private:
+      title: "ABC"
+      description: "abc"
