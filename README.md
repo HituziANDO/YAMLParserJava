@@ -8,7 +8,7 @@ How to use
 
 以下のYAMLファイルを読込むとき
 
-#####YAMLのサンプル
+##### YAMLのサンプル
 test.yml
 
     test:
@@ -22,7 +22,7 @@ test.yml
           title: "ABC"
           description: "abc"
 
-#####Javaコード
+##### Javaコード
 
     HashTypeYAML yaml = new HashTypeYAML();
     Map<String, Object> hash = yaml.decode(new FileInputStream("test.yml"));
