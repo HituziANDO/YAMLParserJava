@@ -263,6 +263,9 @@ public class HashTypeYaml {
     public static void dump(InputStream is, String charsetName) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is, charsetName));
+            StringBuilder builder = new StringBuilder();
+            String lineSeparator = System.getProperty("line.separator");
+            boolean isEmpty = true;
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -271,8 +274,15 @@ public class HashTypeYaml {
                     continue;
                 }
 
-                System.out.println(line);
+                if (!isEmpty) {
+                    builder.append(lineSeparator);
+                }
+
+                builder.append(line);
+                isEmpty = false;
             }
+
+            System.out.println(builder.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
