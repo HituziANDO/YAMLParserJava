@@ -1,0 +1,11 @@
+test1:
+  id: 1234
+  country: "Japan"
+  code:
+  data:
+    users:
+      - Alice
+      - Bob
+      - Chris
+    title: "ABC Team"
+    description: "ABC Team is the best!"
